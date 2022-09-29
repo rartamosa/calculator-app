@@ -1,0 +1,133 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #d9f1ff;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+
+.calculator {
+  width: 375px;
+  height: 812px;
+  background-color: #f7f8fb;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  box-shadow: 68px 81px 85px 6px rgba(96, 190, 255, 0.55);
+  border-radius: 39px;
+}
+
+.calculator__screen {
+  width: 100%;
+  padding: 0 33px;
+  margin-top: 147px;
+  text-align: right;
+}
+
+.calculator__screen_calculation {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.calculator__screen_element {
+  color: #818181;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.calculator__screen_result {
+  color: #424242;
+  font-size: 48px;
+  font-weight: 500;
+}
+
+.variable {
+  color: #109dff;
+  font-size: 24px;
+}
+
+.calculator__buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 62px);
+  grid-gap: 20px;
+  margin-bottom: 40px;
+  margin-top: 137px;
+}
+
+.button {
+  font-size: 32px;
+  font-weight: 500;
+  color: #38b9ff;
+  background-color: #fbfbfd;
+  border: 1px solid #fff;
+  border-radius: 16px;
+  height: 60px;
+}
+
+.button__option {
+  color: #858585;
+  font-size: 24px;
+  background-color: #fff;
+}
+
+.cancel_icon {
+  background-image: url(./assets/button_cancel_bright.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 22px;
+}
+
+.button__variable {
+  font-weight: 500;
+  color: #109dff;
+  background-color: #ade2ff;
+}
+
+.button__zero {
+  grid-column: 1 / 3;
+  color: #109dff;
+}
+
+.button__result {
+  background-color: #19acff;
+  color: #b2daff;
+}
+
+body.darktheme .calculator {
+  background-color: #17181a;
+}
+
+body.darktheme .button {
+  background-color: #303136;
+  border-color: transparent;
+}
+
+body.darktheme .button__option {
+  background-color: #616161;
+  color: #a5a5a5;
+}
+
+body.darktheme .cancel_icon {
+  background-image: url(./assets/button_cancel_dark.png);
+}
+
+body.darktheme .button__variable {
+  background-color: #005db2;
+}
+
+body.darktheme .button__result {
+  background-color: #1991ff;
+}
+
+body.darktheme .calculator__screen_result {
+  color: #fff;
+}

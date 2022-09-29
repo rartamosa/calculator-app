@@ -4,9 +4,49 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.css" />
-    <title>Document</title>
+    <title>Calculator App</title>
   </head>
-  <body></body>
+  <body>
+    <!-- <body class="darktheme"> -->
+    <section class="calculator">
+      <div class="calculator__screen">
+        <div class="calculator__screen_calculation">
+          <div class="calculator__screen_element">6000</div>
+          <div class="variable">/</div>
+          <div class="calculator__screen_element">2</div>
+        </div>
+        <div class="calculator__screen_result">=3000</div>
+      </div>
+      <div class="calculator__buttons">
+        <button type="button" class="button button__option">Ac</button>
+        <button
+          type="button"
+          class="button button__option cancel_icon"
+        ></button>
+        <button type="button" class="button button__option">H</button>
+        <button type="button" class="button button__variable">/</button>
+        <button type="button" class="button">7</button>
+        <button type="button" class="button">8</button>
+        <button type="button" class="button">9</button>
+        <button type="button" class="button button__variable">*</button>
+        <button type="button" class="button">4</button>
+        <button type="button" class="button">5</button>
+        <button type="button" class="button">6</button>
+        <button type="button" class="button button__variable">-</button>
+        <button type="button" class="button">1</button>
+        <button type="button" class="button">2</button>
+        <button type="button" class="button">3</button>
+        <button type="button" class="button button__variable">+</button>
+        <button type="button" class="button button__zero">0</button>
+        <button type="button" class="button">.</button>
+        <button type="button" class="button button__result">=</button>
+      </div>
+    </section>
+  </body>
   <script src="./app.js"></script>
 </html>
