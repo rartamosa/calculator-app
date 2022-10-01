@@ -20,20 +20,31 @@ const secondNumberContainer = document.querySelector(
 const resultValue = document.querySelector(".result");
 
 // Global variables
-let firstNumber = null;
-let mathOperator = null;
-let secondNumber = null;
-let result = null;
+let firstNumber = "";
+let mathOperator = "";
+let secondNumber = "";
+let result = "";
 
 // Event listeners
 numberButtons.forEach(function (element) {
   element.addEventListener("click", function (event) {
+    console.dir(event.target);
     if (!secondNumber && !mathOperator) {
-      firstNumber = event.target.dataset.number;
-      firstNumberContainer.innerText += firstNumber;
+      firstNumber += event.target.dataset.number;
+      firstNumberContainer.innerText = firstNumber;
     } else if (firstNumber && mathOperator) {
-      secondNumber = event.target.dataset.number;
-      secondNumberContainer.innerText += secondNumber;
+      secondNumber += event.target.dataset.number;
+      secondNumberContainer.innerText = secondNumber;
+    } else if (firstNumber && mathOperator && secondNumber) {
+      firstNumber += event.target.dataset.number;
+      firstNumberContainer.innerText = firstNumber;
+      mathOperator = "";
+      mathOperatorContainer.innerText = "";
+      secondNumber = "";
+      secondNumberContainer.innerText = "";
+      resultValue.innerText = "";
+      result = "";
+      resultOperator.classList.remove("equal_visible");
     }
   });
 });
@@ -50,33 +61,31 @@ mathButtons.forEach(function (element) {
 equalButton.addEventListener("click", function (event) {
   if (firstNumber && mathOperator && secondNumber) {
     if (mathOperator === "+") {
-      result = firstNumber + secondNumber;
+      result = parseFloat(firstNumber) + parseFloat(secondNumber);
     } else if (mathOperator === "-") {
-      result = firstNumber - secondNumber;
+      result = parseFloat(firstNumber) - parseFloat(secondNumber);
     } else if (mathOperator === "*") {
-      result = firstNumber * secondNumber;
+      result = parseFloat(firstNumber) * parseFloat(secondNumber);
     } else if (mathOperator === "/") {
-      result = firstNumber / secondNumber;
+      result = parseFloat(firstNumber) / parseFloat(secondNumber);
     }
   }
   resultOperator.classList.add("equal_visible");
   resultValue.innerText = result;
-  parseInt(firstNumber);
-  parseInt(secondNumber);
 });
 
 resetButton.addEventListener("click", function () {
   firstNumberContainer.innerText = "";
-  firstNumber = null;
+  firstNumber = "";
 
   mathOperatorContainer.innerText = "";
-  mathOperator = null;
+  mathOperator = "";
 
   secondNumberContainer.innerText = "";
-  secondNumber = null;
+  secondNumber = "";
 
   resultValue.innerText = "";
-  result = null;
+  result = "";
   resultOperator.classList.remove("equal_visible");
 });
 
@@ -84,14 +93,25 @@ cancelButton.addEventListener("click", function () {
   if (!result) {
     if (secondNumber) {
       secondNumberContainer.innerText = "";
-      secondNumber = null;
+      secondNumber = "";
     } else if (mathOperator) {
       mathOperatorContainer.innerText = "";
-      mathOperator = null;
+      mathOperator = "";
     } else if (firstNumber) {
       firstNumberContainer.innerText = "";
-      firstNumber = null;
+      firstNumber = "";
     }
+  }
+});
+
+pointButton.addEventListener("click", function (event) {
+  if (!firstNumber.includes(".") && !mathOperator && !secondNumber) {
+    firstNumber += event.target.dataset.operator;
+    firstNumberContainer.innerText = firstNumber;
+  }
+  if (firstNumber && mathOperator && !secondNumber.includes(".")) {
+    secondNumber += event.target.dataset.operator;
+    secondNumberContainer.innerText = secondNumber;
   }
 });
 
