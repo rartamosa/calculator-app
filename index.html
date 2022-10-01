@@ -12,39 +12,118 @@
     <title>Calculator App</title>
   </head>
   <body>
-    <!-- <body class="darktheme"> -->
     <section class="calculator">
+      <input class="theme_switch" type="checkbox" />
       <div class="calculator__screen">
         <div class="calculator__screen_calculation">
-          <div class="calculator__screen_element">6000</div>
-          <div class="variable">/</div>
-          <div class="calculator__screen_element">2</div>
+          <div class="calculator__screen_element1"></div>
+          <div class="variable"></div>
+          <div class="calculator__screen_element2"></div>
         </div>
-        <div class="calculator__screen_result">=3000</div>
+        <div class="calculator__screen_result">
+          <span class="equal">=</span>
+          <span class="result"></span>
+        </div>
       </div>
       <div class="calculator__buttons">
-        <button type="button" class="button button__option">Ac</button>
+        <button type="button" class="button button__option button__reset">
+          Ac
+        </button>
         <button
           type="button"
-          class="button button__option cancel_icon"
+          class="button button__option button__cancel"
         ></button>
         <button type="button" class="button button__option">H</button>
-        <button type="button" class="button button__variable">/</button>
-        <button type="button" class="button">7</button>
-        <button type="button" class="button">8</button>
-        <button type="button" class="button">9</button>
-        <button type="button" class="button button__variable">*</button>
-        <button type="button" class="button">4</button>
-        <button type="button" class="button">5</button>
-        <button type="button" class="button">6</button>
-        <button type="button" class="button button__variable">-</button>
-        <button type="button" class="button">1</button>
-        <button type="button" class="button">2</button>
-        <button type="button" class="button">3</button>
-        <button type="button" class="button button__variable">+</button>
-        <button type="button" class="button button__zero">0</button>
-        <button type="button" class="button">.</button>
-        <button type="button" class="button button__result">=</button>
+        <button type="button" class="button button__variable" data-operator="/">
+          /
+        </button>
+        <button
+          type="button"
+          class="button calculator__number-button"
+          data-number="7"
+        >
+          7
+        </button>
+        <button
+          type="button"
+          class="button calculator__number-button"
+          data-number="8"
+        >
+          8
+        </button>
+        <button
+          type="button"
+          class="button calculator__number-button"
+          data-number="9"
+        >
+          9
+        </button>
+        <button type="button" class="button button__variable" data-operator="*">
+          *
+        </button>
+        <button
+          type="button"
+          class="button calculator__number-button"
+          data-number="4"
+        >
+          4
+        </button>
+        <button
+          type="button"
+          class="button calculator__number-button"
+          data-number="5"
+        >
+          5
+        </button>
+        <button
+          type="button"
+          class="button calculator__number-button"
+          data-number="6"
+        >
+          6
+        </button>
+        <button type="button" class="button button__variable" data-operator="-">
+          -
+        </button>
+        <button
+          type="button"
+          class="button calculator__number-button"
+          data-number="1"
+        >
+          1
+        </button>
+        <button
+          type="button"
+          class="button calculator__number-button"
+          data-number="2"
+        >
+          2
+        </button>
+        <button
+          type="button"
+          class="button calculator__number-button"
+          data-number="3"
+        >
+          3
+        </button>
+        <button type="button" class="button button__variable" data-operator="+">
+          +
+        </button>
+        <button
+          type="button"
+          class="button button__zero calculator__number-button"
+          data-number="0"
+        >
+          0
+        </button>
+        <button
+          type="button"
+          class="button button__point calculator__number-button"
+          data-operator="."
+        >
+          .
+        </button>
+        <button type="button" class="button button__equal">=</button>
       </div>
     </section>
   </body>

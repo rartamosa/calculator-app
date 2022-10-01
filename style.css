@@ -11,6 +11,44 @@ body {
   justify-content: center;
   height: 100vh;
   align-items: center;
+  flex-direction: column;
+}
+
+input.theme_switch {
+  position: absolute;
+  left: 20px;
+  margin-top: 20px;
+  -webkit-appearance: none;
+  outline: none;
+  width: 50px;
+  height: 30px;
+  background-color: #fff;
+  border: 1px solid #d9dadc;
+  border-radius: 50px;
+  box-shadow: inset -20px 0 0 0 #17181a;
+}
+
+input.theme_switch:after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background: transparent;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+input.theme_switch:checked {
+  box-shadow: inset 20px 0 0 0 #fff;
+  border-color: #1991ff;
+  background-color: #1991ff;
+}
+
+input.theme_switch:checked:after {
+  left: 20px;
+  box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);
 }
 
 .calculator {
@@ -24,6 +62,7 @@ body {
   text-align: center;
   box-shadow: 68px 81px 85px 6px rgba(96, 190, 255, 0.55);
   border-radius: 39px;
+  position: relative;
 }
 
 .calculator__screen {
@@ -36,9 +75,11 @@ body {
 .calculator__screen_calculation {
   display: flex;
   justify-content: flex-end;
+  height: 37px;
 }
 
-.calculator__screen_element {
+.calculator__screen_element1,
+.calculator__screen_element2 {
   color: #818181;
   font-size: 24px;
   font-weight: 300;
@@ -48,6 +89,20 @@ body {
   color: #424242;
   font-size: 48px;
   font-weight: 500;
+  height: 72px;
+}
+
+.result {
+  text-overflow: ellipsis;
+}
+/* Nie działa */
+
+.equal {
+  display: none;
+}
+
+.equal_visible {
+  display: initial;
 }
 
 .variable {
@@ -71,6 +126,7 @@ body {
   border: 1px solid #fff;
   border-radius: 16px;
   height: 60px;
+  cursor: pointer;
 }
 
 .button__option {
@@ -79,7 +135,7 @@ body {
   background-color: #fff;
 }
 
-.cancel_icon {
+.button__cancel {
   background-image: url(./assets/button_cancel_bright.png);
   background-position: center;
   background-repeat: no-repeat;
@@ -102,6 +158,7 @@ body {
   color: #b2daff;
 }
 
+/* Darktheme */
 body.darktheme .calculator {
   background-color: #17181a;
 }
@@ -116,7 +173,7 @@ body.darktheme .button__option {
   color: #a5a5a5;
 }
 
-body.darktheme .cancel_icon {
+body.darktheme .button__cancel {
   background-image: url(./assets/button_cancel_dark.png);
 }
 
