@@ -28,23 +28,30 @@ let result = "";
 // Event listeners
 numberButtons.forEach(function (element) {
   element.addEventListener("click", function (event) {
-    console.dir(event.target);
+    console.log(firstNumber, mathOperator, secondNumber, result);
     if (!secondNumber && !mathOperator) {
       firstNumber += event.target.dataset.number;
       firstNumberContainer.innerText = firstNumber;
+      console.log("1st warunek:");
+    } else if (result) {
+      firstNumber = event.target.dataset.number;
+      firstNumberContainer.innerText = firstNumber;
+
+      mathOperator = "";
+      mathOperatorContainer.innerText = "";
+
+      secondNumber = "";
+      secondNumberContainer.innerText = "";
+
+      resultOperator.classList.remove("equal_visible");
+
+      resultValue.innerText = "";
+      result = "";
+      console.log("3rd warunek:");
     } else if (firstNumber && mathOperator) {
       secondNumber += event.target.dataset.number;
       secondNumberContainer.innerText = secondNumber;
-    } else if (firstNumber && mathOperator && secondNumber) {
-      firstNumber += event.target.dataset.number;
-      firstNumberContainer.innerText = firstNumber;
-      mathOperator = "";
-      mathOperatorContainer.innerText = "";
-      secondNumber = "";
-      secondNumberContainer.innerText = "";
-      resultValue.innerText = "";
-      result = "";
-      resultOperator.classList.remove("equal_visible");
+      console.log("2nd warunek:");
     }
   });
 });
