@@ -20,19 +20,36 @@ const secondNumberContainer = document.querySelector(
 const resultValue = document.querySelector(".result");
 
 // Global variables
-let firstNumber = "";
+let firstNumber = "0";
 let mathOperator = "";
 let secondNumber = "";
 let result = "";
+firstNumberContainer.innerText = firstNumber;
+
+// Functions
+function trimNumbers() {
+  if (firstNumber[firstNumber.length - 1] === ".") {
+    firstNumber = firstNumber.slice(0, firstNumber.length - 1);
+    firstNumberContainer.innerText = firstNumber;
+  }
+  if (secondNumber[secondNumber.length - 1] === ".") {
+    secondNumber = secondNumber.slice(0, secondNumber.length - 1);
+    secondNumberContainer.innerText = secondNumber;
+  }
+}
 
 // Event listeners
 numberButtons.forEach(function (element) {
   element.addEventListener("click", function (event) {
     console.log(firstNumber, mathOperator, secondNumber, result);
     if (!secondNumber && !mathOperator) {
-      firstNumber += event.target.dataset.number;
-      firstNumberContainer.innerText = firstNumber;
-      console.log("1st warunek:");
+      if (firstNumber === "0") {
+        firstNumber = event.target.dataset.number;
+        firstNumberContainer.innerText = firstNumber;
+      } else {
+        firstNumber += event.target.dataset.number;
+        firstNumberContainer.innerText = firstNumber;
+      }
     } else if (result) {
       firstNumber = event.target.dataset.number;
       firstNumberContainer.innerText = firstNumber;
@@ -51,13 +68,15 @@ numberButtons.forEach(function (element) {
     } else if (firstNumber && mathOperator) {
       secondNumber += event.target.dataset.number;
       secondNumberContainer.innerText = secondNumber;
-      console.log("2nd warunek:");
+      console.log(secondNumber);
     }
   });
 });
 
 mathButtons.forEach(function (element) {
   element.addEventListener("click", function (event) {
+    trimNumbers();
+
     if (firstNumber && !secondNumber) {
       mathOperator = event.target.dataset.operator;
       mathOperatorContainer.innerText = mathOperator;
@@ -67,6 +86,8 @@ mathButtons.forEach(function (element) {
 
 equalButton.addEventListener("click", function (event) {
   if (firstNumber && mathOperator && secondNumber) {
+    trimNumbers();
+
     if (mathOperator === "+") {
       result = parseFloat(firstNumber) + parseFloat(secondNumber);
     } else if (mathOperator === "-") {
@@ -76,9 +97,9 @@ equalButton.addEventListener("click", function (event) {
     } else if (mathOperator === "/") {
       result = parseFloat(firstNumber) / parseFloat(secondNumber);
     }
+    resultOperator.classList.add("equal_visible");
+    resultValue.innerText = result;
   }
-  resultOperator.classList.add("equal_visible");
-  resultValue.innerText = result;
 });
 
 resetButton.addEventListener("click", function () {
@@ -99,14 +120,14 @@ resetButton.addEventListener("click", function () {
 cancelButton.addEventListener("click", function () {
   if (!result) {
     if (secondNumber) {
-      secondNumberContainer.innerText = "";
-      secondNumber = "";
+      secondNumber = secondNumber.slice(0, secondNumber.length - 1);
+      secondNumberContainer.innerText = secondNumber;
     } else if (mathOperator) {
-      mathOperatorContainer.innerText = "";
       mathOperator = "";
+      mathOperatorContainer.innerText = "";
     } else if (firstNumber) {
-      firstNumberContainer.innerText = "";
-      firstNumber = "";
+      firstNumber = firstNumber.slice(0, firstNumber.length - 1);
+      firstNumberContainer.innerText = firstNumber;
     }
   }
 });
@@ -117,8 +138,13 @@ pointButton.addEventListener("click", function (event) {
     firstNumberContainer.innerText = firstNumber;
   }
   if (firstNumber && mathOperator && !secondNumber.includes(".")) {
-    secondNumber += event.target.dataset.operator;
-    secondNumberContainer.innerText = secondNumber;
+    if (secondNumber.length === 0) {
+      secondNumber += "0.";
+      secondNumberContainer.innerText = secondNumber;
+    } else {
+      secondNumber += event.target.dataset.operator;
+      secondNumberContainer.innerText = secondNumber;
+    }
   }
 });
 

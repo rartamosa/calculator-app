@@ -17,7 +17,7 @@ body {
 input.theme_switch {
   position: absolute;
   left: 20px;
-  margin-top: 20px;
+  top: 20px;
   -webkit-appearance: none;
   outline: none;
   width: 50px;
@@ -63,13 +63,15 @@ input.theme_switch:checked:after {
   box-shadow: 68px 81px 85px 6px rgba(96, 190, 255, 0.55);
   border-radius: 39px;
   position: relative;
+  padding-top: 147px;
+  padding-bottom: 40px;
 }
 
 .calculator__screen {
   width: 100%;
   padding: 0 33px;
-  margin-top: 147px;
   text-align: right;
+  overflow-x: scroll;
 }
 
 .calculator__screen_calculation {
@@ -90,11 +92,13 @@ input.theme_switch:checked:after {
   font-size: 48px;
   font-weight: 500;
   height: 72px;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.result {
+/* .result {
   text-overflow: ellipsis;
-}
+} */
 /* Nie działa */
 
 .equal {
@@ -114,7 +118,6 @@ input.theme_switch:checked:after {
   display: grid;
   grid-template-columns: repeat(4, 62px);
   grid-gap: 20px;
-  margin-bottom: 40px;
   margin-top: 137px;
 }
 
