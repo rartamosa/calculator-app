@@ -7,6 +7,7 @@ const resultOperator = document.querySelector(".equal");
 const resetButton = document.querySelector(".button__reset");
 const cancelButton = document.querySelector(".button__cancel");
 const themeButton = document.querySelector(".theme_switch");
+const historyButton = document.querySelector(".button_history");
 
 // Containers
 const body = document.querySelector("body");
@@ -18,6 +19,11 @@ const secondNumberContainer = document.querySelector(
   ".calculator__screen_element2"
 );
 const resultValue = document.querySelector(".result");
+const historyContainer = document.querySelector(".calculator__screen_history");
+const calculatorScreen = document.querySelector(".calculator__screen");
+const historyList = document.querySelector(
+  ".calculator__screen_history-elements"
+);
 
 // Global variables
 let firstNumber = "0";
@@ -100,6 +106,8 @@ equalButton.addEventListener("click", function (event) {
     resultOperator.classList.add("equal_visible");
     resultValue.innerText = result;
   }
+  historyList.innerHTML += `<li>${firstNumber} <span class="variable">${mathOperator}</span> ${secondNumber} = ${result}
+  </li>`;
 });
 
 resetButton.addEventListener("click", function () {
@@ -146,6 +154,11 @@ pointButton.addEventListener("click", function (event) {
       secondNumberContainer.innerText = secondNumber;
     }
   }
+});
+
+historyButton.addEventListener("click", function () {
+  historyContainer.classList.toggle("screen-hidden");
+  calculatorScreen.classList.toggle("screen-hidden");
 });
 
 // Theme switch

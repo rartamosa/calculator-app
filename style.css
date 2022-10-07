@@ -23,9 +23,9 @@ input.theme_switch {
   width: 50px;
   height: 30px;
   background-color: #fff;
-  border: 1px solid #d9dadc;
+  border: 1px solid #ade2ff;
   border-radius: 50px;
-  box-shadow: inset -20px 0 0 0 #17181a;
+  box-shadow: inset -20px 0 0 0 #ade2ff;
 }
 
 input.theme_switch:after {
@@ -41,9 +41,9 @@ input.theme_switch:after {
 }
 
 input.theme_switch:checked {
-  box-shadow: inset 20px 0 0 0 #fff;
-  border-color: #1991ff;
-  background-color: #1991ff;
+  box-shadow: inset 20px 0 0 0 #005db2;
+  border-color: #005db2;
+  background-color: #fff;
 }
 
 input.theme_switch:checked:after {
@@ -63,8 +63,10 @@ input.theme_switch:checked:after {
   box-shadow: 68px 81px 85px 6px rgba(96, 190, 255, 0.55);
   border-radius: 39px;
   position: relative;
-  padding-top: 147px;
+  padding-left: 33px;
   padding-bottom: 40px;
+  padding-right: 33px;
+  padding-top: 147px;
 }
 
 .calculator__screen {
@@ -96,11 +98,6 @@ input.theme_switch:checked:after {
   justify-content: flex-end;
 }
 
-/* .result {
-  text-overflow: ellipsis;
-} */
-/* Nie działa */
-
 .equal {
   display: none;
 }
@@ -118,7 +115,6 @@ input.theme_switch:checked:after {
   display: grid;
   grid-template-columns: repeat(4, 62px);
   grid-gap: 20px;
-  margin-top: 137px;
 }
 
 .button {
@@ -159,6 +155,25 @@ input.theme_switch:checked:after {
 .button__result {
   background-color: #19acff;
   color: #b2daff;
+}
+
+.calculator__screen_history {
+  color: #818181;
+  max-height: 130px;
+  font-size: 24px;
+  width: 100%;
+  overflow: auto;
+}
+
+.calculator__screen_history-elements {
+  list-style-type: none;
+  text-align: right;
+  align-items: flex-end;
+  padding-right: 20px;
+}
+
+.screen-hidden {
+  display: none;
 }
 
 /* Darktheme */
