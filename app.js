@@ -1,28 +1,29 @@
 // Buttons
-const numberButtons = document.querySelectorAll(".calculator__number-button");
-const mathButtons = document.querySelectorAll(".button__variable");
-const equalButton = document.querySelector(".button__equal");
-const pointButton = document.querySelector(".button__point");
+const numberButtons = document.querySelectorAll(".calculator__buttons-number");
+const mathButtons = document.querySelectorAll(".calculator__buttons-variable");
+const equalButton = document.querySelector(".calculator__buttons-equal");
+const pointButton = document.querySelector(".calculator__buttons-point");
 const resultOperator = document.querySelector(".equal");
-const resetButton = document.querySelector(".button__reset");
-const cancelButton = document.querySelector(".button__cancel");
+const resetButton = document.querySelector(".calculator__buttons-reset");
+const cancelButton = document.querySelector(".calculator__buttons-cancel");
 const themeButton = document.querySelector(".theme_switch");
-const historyButton = document.querySelector(".button_history");
+const historyButton = document.querySelector(".calculator__buttons-history");
 
 // Containers
 const body = document.querySelector("body");
 const firstNumberContainer = document.querySelector(
-  ".calculator__screen_element1"
+  ".calculator__screen-element1"
 );
 const mathOperatorContainer = document.querySelector(".variable");
 const secondNumberContainer = document.querySelector(
-  ".calculator__screen_element2"
+  ".calculator__screen-element2"
 );
 const resultValue = document.querySelector(".result");
-const historyContainer = document.querySelector(".calculator__screen_history");
+console.log(resultValue);
+const historyContainer = document.querySelector(".calculator__screen-history");
 const calculatorScreen = document.querySelector(".calculator__screen");
 const historyList = document.querySelector(
-  ".calculator__screen_history-elements"
+  ".calculator__screen-history-elements"
 );
 
 // Global variables
@@ -47,7 +48,6 @@ function trimNumbers() {
 // Event listeners
 numberButtons.forEach(function (element) {
   element.addEventListener("click", function (event) {
-    console.log(firstNumber, mathOperator, secondNumber, result);
     if (!secondNumber && !mathOperator) {
       if (firstNumber === "0") {
         firstNumber = event.target.dataset.number;
@@ -70,11 +70,14 @@ numberButtons.forEach(function (element) {
 
       resultValue.innerText = "";
       result = "";
-      console.log("3rd warunek:");
     } else if (firstNumber && mathOperator) {
-      secondNumber += event.target.dataset.number;
-      secondNumberContainer.innerText = secondNumber;
-      console.log(secondNumber);
+      if (secondNumber === "0") {
+        secondNumber = event.target.dataset.number;
+        secondNumberContainer.innerText = secondNumber;
+      } else {
+        secondNumber += event.target.dataset.number;
+        secondNumberContainer.innerText = secondNumber;
+      }
     }
   });
 });
@@ -111,8 +114,8 @@ equalButton.addEventListener("click", function (event) {
 });
 
 resetButton.addEventListener("click", function () {
-  firstNumberContainer.innerText = "";
-  firstNumber = "";
+  firstNumberContainer.innerText = "0";
+  firstNumber = "0";
 
   mathOperatorContainer.innerText = "";
   mathOperator = "";
@@ -145,7 +148,7 @@ pointButton.addEventListener("click", function (event) {
     firstNumber += event.target.dataset.operator;
     firstNumberContainer.innerText = firstNumber;
   }
-  if (firstNumber && mathOperator && !secondNumber.includes(".")) {
+  if (firstNumber && mathOperator && !secondNumber.includes(".") && !result) {
     if (secondNumber.length === 0) {
       secondNumber += "0.";
       secondNumberContainer.innerText = secondNumber;
