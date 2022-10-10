@@ -53,7 +53,7 @@ body {
 
 .calculator {
   width: 375px;
-  height: 812px;
+  height: 700px;
   background-color: #f7f8fb;
   display: flex;
   flex-direction: column;
@@ -61,7 +61,7 @@ body {
   box-shadow: 68px 81px 85px 6px rgba(96, 190, 255, 0.55);
   border-radius: 39px;
   position: relative;
-  padding: 147px 33px 40px 33px;
+  padding: 90px 33px 40px 33px;
 }
 
 .calculator__screen {
